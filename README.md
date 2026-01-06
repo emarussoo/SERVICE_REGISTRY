@@ -1,4 +1,4 @@
-Distributed Service Registry System using gRPC and Go
+Distributed Service Registry System using gRPC and Go.
 This project implements a distributed system architecture based on the Service Registry pattern.
 
 ---> System Architecture
@@ -13,7 +13,7 @@ Echo Service: A microservice that echoes back received messages. Same logic as c
 Client: The entry point for the user. It contacts the Registry to discover available services and establishes a direct gRPC connection with the target service to execute requests.
 
 ---> Protocols and implementation
-gRPC & Protobuf
+gRPC & Protobuf.
 
 Dynamic Discovery: Services are not hardcoded in the client. The client asks the Registry where a service is located at runtime.
 
@@ -30,8 +30,8 @@ q: Graceful Shutdown.
 Stateless and stateful client side load balancing (random & weighted with dummy random weights who simulate an ipothetic workload)
 
 📂 Project Structure
-Plaintext
-/SERVICE_REGISTRY
+Plaintext<br>
+/SERVICE_REGISTRY<br>
 │
 ├── /registry           # The central Registry Server
 │   ├── /pb             # Generated gRPC code for Registry
