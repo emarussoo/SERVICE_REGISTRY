@@ -53,7 +53,7 @@ func (s *registry_server) DropService(context context.Context, req *pbReg.Servic
 	findServiceName, exists := s.services[req.Name]
 
 	if !exists {
-		return &pbReg.IsDone{Done: false}, nil
+		return &pbReg.IsDone{Done: false}, status.Errorf(codes.NotFound, "service %s not found", req.Name)
 	}
 
 	toReturnList := make([]*pbReg.Service, 0, len(findServiceName))

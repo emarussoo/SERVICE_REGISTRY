@@ -1,8 +1,8 @@
 package main
 
 import (
-	pb3 "SERVICE_REGISTRY/calculator/pb"
-	pb2 "SERVICE_REGISTRY/echo/pb"
+	pbCalc "SERVICE_REGISTRY/calculator/pb"
+	pbEcho "SERVICE_REGISTRY/echo/pb"
 	"SERVICE_REGISTRY/registry/pb"
 	"context"
 	"flag"
@@ -37,11 +37,11 @@ func filterList(name string, list []*pb.Service) []*pb.Service {
 
 func invokeCalculator(conn *grpc.ClientConn) {
 
-	c := pb3.NewCalculatorClient(conn)
+	c := pbCalc.NewCalculatorClient(conn)
 
 	ctx := context.Background()
 
-	res, err := c.Sum(ctx, &pb3.Parameters{Num1: 10, Num2: 20})
+	res, err := c.Sum(ctx, &pbCalc.Parameters{Num1: 10, Num2: 20})
 
 	if err != nil {
 		log.Printf("RPC Calculator error: %v", err)
@@ -51,7 +51,7 @@ func invokeCalculator(conn *grpc.ClientConn) {
 }
 
 func invokeEcho(conn *grpc.ClientConn) {
-	c := pb2.NewEchoClient(conn)
+	c := pbEcho.NewEchoClient(conn)
 
 	ctx := context.Background()
 
@@ -61,7 +61,7 @@ func invokeEcho(conn *grpc.ClientConn) {
 	if err != nil {
 		fmt.Println("Scan error")
 	}
-	res, err := c.Repeat(ctx, &pb2.Msg{Mess: toRepeat})
+	res, err := c.Repeat(ctx, &pbEcho.Msg{Mess: toRepeat})
 
 	if err != nil {
 		log.Printf("rpc call error: %v", err)
@@ -73,7 +73,7 @@ func main() {
 	registryAddr := flag.String("registry", "localhost:50055", "Registry address ip:port")
 	flag.Parse()
 
-	fmt.Printf("Trying connection to %s...\n", registryAddr)
+	fmt.Printf("Trying connection to %s...\n", *registryAddr)
 
 	conn, err := grpc.Dial(*registryAddr, grpc.WithTransportCredentials(insecure.NewCredentials()))
 	if err != nil {
