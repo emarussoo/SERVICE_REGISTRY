@@ -1,0 +1,20 @@
+syntax = 'proto3';
+
+package calculator;
+option go_package = "./calculator/pb";
+
+service Calculator{
+  rpc Sum(Parameters) returns (Result){}
+  rpc Mul(Parameters) returns (Result){}
+  rpc Sub(Parameters) returns (Result){}
+  rpc Div(Parameters) returns (Result){}
+}
+
+message Parameters {
+  float num1 = 1;
+  float num2 = 2;
+}
+
+message Result {
+  float res = 1;
+}

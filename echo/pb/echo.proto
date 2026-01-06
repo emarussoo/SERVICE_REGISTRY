@@ -1,0 +1,17 @@
+syntax = 'proto3';
+
+package echo;
+option go_package = "./echo/pb";
+
+service Echo{
+  rpc Repeat(msg) returns (reply);
+}
+
+
+message msg{
+  string mess = 1;
+}
+
+message reply{
+  string reply = 1;
+}

@@ -1,0 +1,29 @@
+syntax = 'proto3';
+
+package registry;
+option go_package = "./registry/pb";
+service registry {
+  rpc RegisterService(service) returns (isDone);
+  rpc DropService (service) returns (isDone);
+  rpc ListServices (Empty) returns (listOfServices);
+  rpc UpdateWeight (service) returns (isDone);
+}
+
+message Empty{
+
+}
+message isDone{
+  bool done = 1;
+}
+
+message service {
+  string name = 1;
+  string ip = 2;
+  string port = 3;
+  int32 weight = 4;
+}
+
+message listOfServices {
+  repeated service list = 1;
+}
+
