@@ -29,38 +29,13 @@ q: Graceful Shutdown.
 
 Stateless and stateful client side load balancing (random & weighted with dummy random weights who simulate an ipothetic workload)
 
-📂 Project Structure
-Plaintext<br>
-/SERVICE_REGISTRY<br>
-│
-├── /registry           # The central Registry Server
-│   ├── /pb             # Generated gRPC code for Registry
-│   └── registry.go        # Server logic
-│
-├── /calculator         # The Calculator Microservice
-│   ├── /pb             # Generated gRPC code for Calculator
-│   └── calculator_server.go        # Server logic
-│
-├── /echo               # The Echo Microservice
-│   ├── /pb             # Generated gRPC code for Echo
-│   └── echo_server.go         # Server logic
-│
-├── /client             # The User Client
-│   └── client.go       # Logic to query Registry and call services
-│
-├── /utils             # Shared utilities (IP lookup, CLI listener)
-│   └── utils.go
-│                
-└── go.mod             # Go module definition
 
-
-
-🛠 Prerequisites
+---> Prerequisites
 Go (1.25.4) or higher
 
 Protoc Compiler (for regenerating .proto files, if needed)
 
-⚡️ How to Run
+---> How to Run
 To run the full system, you need to open multiple terminal windows.
 The terminals can be opened in different PCs, but they need to be connected to the same LAN.
 
