@@ -2,6 +2,7 @@ Distributed Service Registry System using gRPC and Go.
 This project implements a distributed system architecture based on the Service Registry pattern.
 
 ---> System Architecture
+
 The project is composed of four main actors:
 
 Service Registry: The central authority. It maintains an in-memory database of all available service instances (Name, IP, Port, Weight). It handles service registration, de-registration, and listing.
@@ -13,6 +14,7 @@ Echo Service: A microservice that echoes back received messages. Same logic as c
 Client: The entry point for the user. It contacts the Registry to discover available services and establishes a direct gRPC connection with the target service to execute requests.
 
 ---> Protocols and implementation
+
 gRPC & Protobuf.
 
 Dynamic Discovery: Services are not hardcoded in the client. The client asks the Registry where a service is located at runtime.
@@ -31,11 +33,13 @@ Stateless and stateful client side load balancing (random & weighted with dummy 
 
 
 ---> Prerequisites
+
 Go (1.25.4) or higher
 
 Protoc Compiler (for regenerating .proto files, if needed)
 
----> How to Run
+---> How to Run  
+
 To run the full system, you need to open multiple terminal windows.
 The terminals can be opened in different PCs, but they need to be connected to the same LAN.
 
@@ -57,6 +61,7 @@ go run client/client.go -registry=<registry_ip>:<registry_port>
 
 
 ---> Interactive commands
+
 When a service (Calculator/Echo) is running, you can interact with it via its terminal:
 
 Press u and Enter to Unregister the service from the registry (The client will no longer find it).
